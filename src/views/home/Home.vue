@@ -38,6 +38,7 @@ import BackTop from "components/common/backtop/BackTop";
 import { getHomeAllData, getHomeGoods } from "network/home.js";
 import { onMounted, reactive, ref, computed, watchEffect, nextTick } from "vue";
 import BScroll from "better-scroll";
+import { Toast } from "vant";
 export default {
     name: "Home",
     components: {
@@ -69,12 +70,17 @@ export default {
         });
 
         onMounted(() => {
+            Toast.loading({
+                message: "加载中...",
+                forbidClick: true,
+            });
             getHomeAllData().then((res) => {
                 recommends.value = res.goods.data;
                 banners.value = res.slides;
             });
             getHomeGoods("sales").then((res) => {
                 goods.sales.list = res.goods.data;
+                Toast.clear();
             });
             getHomeGoods("recommend").then((res) => {
                 goods.recommend.list = res.goods.data;

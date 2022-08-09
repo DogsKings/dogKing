@@ -22,7 +22,7 @@
 
         <router-link class="tab-bar-item" to="/shopcart">
             <div class="icon">
-                <van-badge :content="0" max="9">
+                <van-badge :content="$store.state.cartCount" max="99">
                     <div class="child" />
                     <i class="iconfont icon-gouwuche"></i>
                 </van-badge>
@@ -39,11 +39,14 @@
     </div>
 </template>
 <script>
-import { reactive, watch, toRefs } from "vue";
+import { reactive, watch, onMounted, toRefs } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import { useStore } from "vuex";
 export default {
     name: "App",
     setup() {
+        const store = useStore();
+
         const state = reactive({
             includeList: [],
         });
@@ -62,6 +65,9 @@ export default {
             },
             { deep: true }
         ); // 开启深度监听
+        onMounted(() => {
+            store.dispatch("updateCart");
+        });
         return {
             ...toRefs(state),
         };

@@ -56,6 +56,7 @@ import { getCategory, getCategoryGoods } from "network/category.js";
 import BScroll from "better-scroll";
 import BackTop from "components/common/backtop/BackTop";
 import { useRoute, useRouter } from "vue-router";
+import { Toast } from "vant";
 export default {
     name: "Category",
     components: { NavBar, BScroll, BackTop },
@@ -95,6 +96,11 @@ export default {
         });
 
         onMounted(() => {
+            init();
+            Toast.loading({
+                message: "加载中...",
+                forbidClick: true,
+            });
             getCategory().then((res) => {
                 categories.value = res.categories;
             });
@@ -102,6 +108,8 @@ export default {
             getCategoryGoods(currentOrder.value, currentCid.value).then(
                 (res) => {
                     goods[currentOrder.value].list = res.goods.data;
+
+                    Toast.clear();
                 }
             );
             bscroll = new BScroll(document.querySelector(".goodlist"), {

@@ -9,7 +9,7 @@
                     width="10rem"
                     height="10rem"
                     fit="contain"
-                    src="https://cdn.jsdelivr.net/npm/@vant/assets/cat.jpeg"
+                    src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg"
                 />
             </div>
         </div>
@@ -65,11 +65,12 @@ export default {
                 store.commit("setIsLogin", true);
 
                 Toast.success("登录成功");
+                //清除账号和密码
                 userinfo.email = "";
                 userinfo.password = "";
 
                 setTimeout(() => {
-                    router.go(-1);
+                    router.push({ path: "/" });
                 }, 500);
             });
         };

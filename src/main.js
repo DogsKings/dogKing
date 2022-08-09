@@ -22,6 +22,15 @@ import {
     Form,
     Field,
     CellGroup,
+    SwipeCell,
+    Stepper,
+    Checkbox,
+    CheckboxGroup,
+    SubmitBar,
+    Icon,
+    AddressEdit,
+    AddressList,
+    Popup
 
 
 } from 'vant';
@@ -42,6 +51,21 @@ createApp(App)
     .use(Form)
     .use(Field)
     .use(CellGroup)
+    .use(SwipeCell)
+    .use(Stepper)
+    .use(Checkbox)
+    .use(CheckboxGroup)
+    .use(SubmitBar)
+    .use(Icon)
+    .use(AddressEdit)
+    .use(AddressList)
+    .use(Popup)
+
+
+
+
+
+
 
 
     .use(Lazyload, {

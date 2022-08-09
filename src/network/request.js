@@ -26,7 +26,7 @@ export function request(config) {
     }, err => {
         //如果有需要授权才可以访问的接口，统一去login授权
         if (err.response.status == '401') {
-            Toast.fail('请先登录')
+            Toast.fail('账号或密码输入错误')
             router.push({ path: '/login' })
         }
 
