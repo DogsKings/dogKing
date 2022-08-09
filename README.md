@@ -1,4 +1,4 @@
-# bookshop
+# 小恐龙图书网
 
 ## Project setup
 ```
@@ -14,6 +14,7 @@ npm run serve
 ```
 npm run build
 ```
+### BScroll插件会有些问题导致首页不能滑动
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+刷新即可
+
